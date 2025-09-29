@@ -9,4 +9,8 @@ if result != None:
   print(f"\nAcronym {subject} has existing data:")
   for title in range(result["titles"]):
     print(f"{result["titles"][title]}: {result["descs"][title]}\n{result["links"][title]}\n")
-  ntitle = input("Please enter the definition you'd like to update or create. ").capitalize()
+ntitle = input("Please enter the definition you'd like to update or create. ").capitalize().strip()
+ndesc = input("Optionally enter a short description of the meaning. ").strip()
+nlink = input("Optionally enter a link to a Wikipedia article on the subject. Strongly recommended. ").lower().strip()
+#TODO: call db update function and define args
+print("\nDone. Exiting...\n")
