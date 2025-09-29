@@ -4,7 +4,7 @@ from handler.py import *
 print("OSFSSdb Updater\n")
 subject = input("Enter the acronym you'd like to update the information for: ").upper().strip()
 #TODO: call db read function and check for existing values. if so, expect output formatted as {"titles":[],"descs":[],"links":[]} where a blank list element is used if no value is provided in each category
-result = grabDB()
+result = grabDB(subject=subject)
 print(result) #DEBUG!!
 if result != None:
   print(f"\nAcronym {subject} has existing data:")
