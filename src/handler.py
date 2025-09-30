@@ -13,7 +13,7 @@ if qdb.fetchone() is None:
         cur.execute("INSERT INTO acro VALUES ("+str(l)+str(e)+str(t)+",'','','')")
 
 #TODO: write function for reading sqlite db and returning the data efficiently
-def grabDB(include_short=False):
+def grabDB(include_short=False, subject=None):
   form = {}
   if include_short:
     form["short"] = []
@@ -26,6 +26,11 @@ def grabDB(include_short=False):
     form["names"].append(row[1])
     form["defs"].append(row[2])
     form["links"].append(row[3])
+  if subject is not None and include_short:
+    locs = [i for i, data in enumerate(form["short"]) if data == subject]
+    form["names"] = [form["names"][i] for i in locs]
+    form["defs"] = [form["defs"][i] for i in locs]
+    form["links"] = [form["links"][i] for i in locs]
   return form
     
 #TODO: write function for updating sqlite db (check for malicious or incorrect requests)
